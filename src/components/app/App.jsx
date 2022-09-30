@@ -5,10 +5,17 @@ import Todo from "../todo";
 import TodoForm from "../todoform";
 
 export default function App() {
-  const [todos, useTodos] = useState([])
+  const [todos, setTodos] = useState([])
 
-  const addTask = () => {
-
+  const addTask = (userInput) => {
+    if(userInput) {
+      const newItem = {
+        id: Math.random().toString(36).substring(2,9),
+        task: userInput,
+        complete: false,
+      }
+      setTodos([...todos, newItem])
+    }
   }
 
   const removeTask = () => {
